@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/systemui_seekbar_bg"
+        android:layout_marginRight="20dp">
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/btn_volume_img"
+        android:src="@drawable/icon_voice"
+        android:layout_marginRight="20dp"
+        />
+        <SeekBar
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/text1"
+            android:maxHeight="12dp"
+            android:minHeight="12dp"
+            android:paddingBottom="3dp"
+            android:paddingLeft="12dp"
+            android:max="200"
+            android:paddingRight="12dp"
+            android:paddingTop="3dp"
+            android:layout_gravity="center"
+            android:progressDrawable="@drawable/seekbar_layer"
+            android:thumb="@drawable/seekbar_ring" />
+</LinearLayout>
+    <ImageButton
+        android:id="@+id/btn_volume_mute"
+        android:layout_width="@dimen/systemui_imagebutton_background_width"
+        android:layout_height="@dimen/systemui_imagebutton_background_width"
+        android:scaleType="centerInside"
+        android:background="@drawable/systemui_imagebutton_background_normal"
+        android:src="@drawable/imgbtn_media_mute_selector"
+        android:layout_gravity="center"
+        />
+</LinearLayout>

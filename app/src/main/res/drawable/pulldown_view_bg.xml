@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/systemui_pulldown_view_bg_color"></solid>
+    <size android:height="@dimen/systemui_pulldown_view_background_height"
+        android:width="@dimen/systemui_pulldown_view_background_width"></size>
+    <corners
+        android:topLeftRadius="@dimen/systemui_pulldown_view_background_corner"
+        android:topRightRadius="@dimen/systemui_pulldown_view_background_corner"
+        android:bottomLeftRadius="@dimen/systemui_pulldown_view_background_corner"
+        android:bottomRightRadius="@dimen/systemui_pulldown_view_background_corner"
+        />
+</shape>
