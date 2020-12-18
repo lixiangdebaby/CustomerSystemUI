@@ -84,13 +84,6 @@ public class FloatingSystemUIService extends Service {
             displayView = layoutInflater.inflate(R.layout.systemui_main_layout,null);
             displayView.setOnTouchListener(new FloatingOnTouchListener());
             mWindowManage.addView(displayView,mLayoutParams);
-            /*mHomeBtn = (ImageButton)displayView.findViewById(R.id.btn_home);
-            mHomeBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    StartActivityUtils.startActivityHome(getApplicationContext());
-                }
-            });*/
         }
     }
     private class FloatingOnTouchListener implements View.OnTouchListener {

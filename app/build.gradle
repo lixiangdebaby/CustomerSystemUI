@@ -40,7 +40,6 @@ android {
 
 dependencies {
     implementation 'androidx.wear:wear:1.0.0'
-    compile project(':pull-down-layout')
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'

@@ -12,7 +12,8 @@
         android:persistent="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SystemUI">
+        android:theme="@style/Theme.SystemUI"
+        android:name=".SystemUIApplication">
         <activity android:name=".SystemUILaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
