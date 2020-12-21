@@ -23,7 +23,7 @@
         </activity>
 
         <service
-            android:name=".service.FloatingSystemUIService"
+            android:name=".service.SaicSystemUIService"
             android:enabled="true"
             android:exported="true" />
 

@@ -1,4 +1,4 @@
-package com.saicmotor.slidinguppanel;
+package com.saicmotor.systemui.slidinguppanel;
 
 import android.view.View;
 import android.widget.ListView;

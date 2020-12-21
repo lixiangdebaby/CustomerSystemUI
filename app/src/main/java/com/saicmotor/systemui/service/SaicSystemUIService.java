@@ -22,14 +22,14 @@ import com.saicmotor.systemui.utils.StartActivityUtils;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
-public class FloatingSystemUIService extends Service {
+public class SaicSystemUIService extends Service {
     public static boolean mIsStarted = false;
-    private static final String TAG = FloatingSystemUIService.class.getSimpleName();
+    private static final String TAG = SaicSystemUIService.class.getSimpleName();
     private WindowManager mWindowManage;
     private WindowManager.LayoutParams mLayoutParams;
     private View displayView;
     private ImageButton mHomeBtn;
-    public FloatingSystemUIService() {
+    public SaicSystemUIService() {
     }
 
     @Override
@@ -52,7 +52,6 @@ public class FloatingSystemUIService extends Service {
         }
         mLayoutParams.format = PixelFormat.RGBA_8888;
         mLayoutParams.gravity = Gravity.LEFT | Gravity.TOP;
-        //mLayoutParams.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN;
         mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL|WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
         mLayoutParams.flags |= WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
         mLayoutParams.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
@@ -81,7 +80,7 @@ public class FloatingSystemUIService extends Service {
     private void showFloatingWindow() {
         if(Settings.canDrawOverlays(this)){
             LayoutInflater layoutInflater =LayoutInflater.from(this);
-            displayView = layoutInflater.inflate(R.layout.systemui_main_layout,null);
+            displayView = layoutInflater.inflate(R.layout.activity_main_test2,null);
             displayView.setOnTouchListener(new FloatingOnTouchListener());
             mWindowManage.addView(displayView,mLayoutParams);
         }
@@ -98,7 +97,7 @@ public class FloatingSystemUIService extends Service {
                     y = (int) event.getRawY();
                     break;
                 case MotionEvent.ACTION_MOVE:
-                    int nowX = (int) event.getRawX();
+                   /* int nowX = (int) event.getRawX();
                     int nowY = (int) event.getRawY();
                     mLayoutParams.height = nowY;
                     if(mLayoutParams.height <= 20){
@@ -107,7 +106,7 @@ public class FloatingSystemUIService extends Service {
                     if(mLayoutParams.height >= 800){
                         mLayoutParams.height = 800;
                     }
-                    mWindowManage.updateViewLayout(view, mLayoutParams);
+                    mWindowManage.updateViewLayout(view, mLayoutParams);*/
                     break;
                 default:
                     break;

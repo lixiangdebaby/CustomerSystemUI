@@ -15,7 +15,7 @@
  */
 
 
-package com.saicmotor.slidinguppanel;
+package com.saicmotor.systemui.slidinguppanel;
 
 import android.content.Context;
 import android.view.MotionEvent;

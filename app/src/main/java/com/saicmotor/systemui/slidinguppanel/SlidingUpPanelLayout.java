@@ -1,4 +1,4 @@
-package com.saicmotor.slidinguppanel;
+package com.saicmotor.systemui.slidinguppanel;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
