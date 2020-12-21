@@ -3,6 +3,8 @@ package com.saicmotor.systemui;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
@@ -15,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.saicmotor.systemui.slidinguppanel.SlidingUpPanelLayout;
+import com.saicmotor.systemui.utils.StartActivityUtils;
 
 import static android.content.Context.WINDOW_SERVICE;
 
@@ -29,7 +32,9 @@ public class NaviPanelUI {
     private static final String TAG = NaviPanelUI.class.getSimpleName();
     private ViewGroup.LayoutParams mDispalyViewLayoutParams;
     private LinearLayout mLinear_sliddown;
-
+    private static final int COLLAPSED_MSG = 10;
+    private static final int EXPANDED_MSG = 12;
+    UpdateUIHandler mUpdateUIHandler;
     public static NaviPanelUI getInstance(Context context){
         if(mNaviPanelUI == null){
             mNaviPanelUI = new NaviPanelUI(context);
@@ -38,6 +43,7 @@ public class NaviPanelUI {
     }
     public NaviPanelUI(Context context){
         mContext =  context;
+        mUpdateUIHandler = new UpdateUIHandler();
         createFloatingView();
         showFloatingWindow();
     }
@@ -75,6 +81,10 @@ public class NaviPanelUI {
                 mLinear_sliddown.setOnTouchListener(new PanelDownOnTouchListener());
             }
             mDisplayView.addPanelSlideListener(new DisplayViewPanelStateLister());
+            mHomeBtn = (ImageButton)mDisplayView.findViewById(R.id.btn_home);
+            if(mHomeBtn != null){
+                mHomeBtn.setOnClickListener(new HomeBtnOnClickListener());
+            }
         }
     }
     private class FloatingOnTouchListener implements View.OnTouchListener {
@@ -134,6 +144,7 @@ public class NaviPanelUI {
             mWindowManage.updateViewLayout(mDisplayView, mLayoutParams);
         }
     }
+
     public SlidingUpPanelLayout.PanelState getPanelState(){
         return mDisplayView.getPanelState();
     }
@@ -146,6 +157,26 @@ public class NaviPanelUI {
         public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
             if(newState == SlidingUpPanelLayout.PanelState.COLLAPSED){
                 setNaviPanelUICollaps(false);
+            }
+        }
+    }
+    class HomeBtnOnClickListener implements View.OnClickListener{
+        @Override
+        public void onClick(View view) {
+            StartActivityUtils.startActivityHome(mContext);
+            mUpdateUIHandler.removeMessages(COLLAPSED_MSG);
+            mUpdateUIHandler.sendEmptyMessage(COLLAPSED_MSG);
+        }
+    }
+    class UpdateUIHandler extends Handler
+    {
+        @Override
+        public void handleMessage(Message msg) {
+            int i = msg.what;
+            if(i == COLLAPSED_MSG){
+                mDisplayView.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+            }else if(i == EXPANDED_MSG){
+                mDisplayView.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
             }
         }
     }

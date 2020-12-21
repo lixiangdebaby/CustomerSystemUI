@@ -42,7 +42,7 @@ public class SaicSystemUIService extends Service {
     public void onCreate() {
         super.onCreate();
         Log.d(TAG,"FloatingSystemUIService start");
-        mNaviPanelUI =  NaviPanelUI.getInstance(mContext);
+        mNaviPanelUI =  NaviPanelUI.getInstance(getApplication());
     }
 
     @Override
