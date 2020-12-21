@@ -4,7 +4,7 @@
     xmlns:saicmotor="http://schemas.android.com/apk/res-auto"
     android:id="@+id/sliding_layout"
     android:layout_width="match_parent"
-    android:layout_height="800px"
+    android:layout_height="750px"
     android:background="@android:color/transparent"
     android:gravity="top"
     saicmotor:umanoPanelHeight="60px"
@@ -12,6 +12,7 @@
     saicmotor:umanoParallaxOffset="50dp"
     saicmotor:umanoDragView="@+id/dragView"
     saicmotor:umanoOverlay="true"
+    saicmotor:umanoFadeColor="@android:color/transparent"
     saicmotor:umanoScrollableView="@+id/list">
 
     <!-- MAIN CONTENT -->
@@ -26,7 +27,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="800px"
+        android:layout_height="750px"
         android:orientation="vertical"
         android:id="@+id/dragView"
         android:background="@color/systemui_background_color">
@@ -187,13 +188,21 @@
 
         <include layout="@layout/screen_brightness_seekbar"/>
         <include layout="@layout/third_line_button_layout"/>
-        <FrameLayout
-            android:layout_width="180px"
-            android:layout_height="10px"
-            android:layout_marginTop="76px"
-            android:layout_marginStart="870px"
-            android:background="@drawable/pulldown_view_bg"
-            />
+        <LinearLayout
+                android:id="@+id/linear_sliddown"
+                android:layout_width="match_parent"
+                android:layout_height="102px"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginEnd="0dp"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="180px"
+                    android:layout_height="10px"
+                    android:layout_gravity="center"
+                    android:background="@drawable/pulldown_view_bg"
+                    />
+        </LinearLayout>
 
     </LinearLayout>
 </com.saicmotor.systemui.slidinguppanel.SlidingUpPanelLayout>
