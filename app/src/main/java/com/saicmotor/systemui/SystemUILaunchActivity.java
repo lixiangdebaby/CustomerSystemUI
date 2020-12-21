@@ -29,7 +29,7 @@ public class SystemUILaunchActivity extends AppCompatActivity {
     }
     public void startNavigationSystemUIService(Context context){
         Intent intentRequestPermission = new Intent();
-        if(SaicSystemUIService.mIsStarted){
+        if(NaviPanelUI.mIsStarted){
             return;
         }
         if(!Settings.canDrawOverlays(this)){

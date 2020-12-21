@@ -1,6 +1,7 @@
 package com.saicmotor.systemui.service;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Build;
@@ -16,19 +17,18 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.saicmotor.systemui.NaviPanelUI;
 import com.saicmotor.systemui.R;
+import com.saicmotor.systemui.SystemUIApplication;
 import com.saicmotor.systemui.utils.StartActivityUtils;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
 public class SaicSystemUIService extends Service {
-    public static boolean mIsStarted = false;
     private static final String TAG = SaicSystemUIService.class.getSimpleName();
-    private WindowManager mWindowManage;
-    private WindowManager.LayoutParams mLayoutParams;
-    private View displayView;
-    private ImageButton mHomeBtn;
+    private Context mContext = SystemUIApplication.getInstance();
+    private NaviPanelUI mNaviPanelUI;
     public SaicSystemUIService() {
     }
 
@@ -42,29 +42,11 @@ public class SaicSystemUIService extends Service {
     public void onCreate() {
         super.onCreate();
         Log.d(TAG,"FloatingSystemUIService start");
-        mIsStarted = true;
-        mWindowManage = (WindowManager) getSystemService(WINDOW_SERVICE);
-        mLayoutParams = new WindowManager.LayoutParams();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            mLayoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
-        } else {
-            mLayoutParams.type = WindowManager.LayoutParams.TYPE_PHONE;
-        }
-        mLayoutParams.format = PixelFormat.RGBA_8888;
-        mLayoutParams.gravity = Gravity.LEFT | Gravity.TOP;
-        mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL|WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
-        mLayoutParams.flags |= WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
-        mLayoutParams.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
-        mLayoutParams.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
-        mLayoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
-        mLayoutParams.height = 800;
-        mLayoutParams.x = 0;
-        mLayoutParams.y = 0;
+        mNaviPanelUI =  NaviPanelUI.getInstance(mContext);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        showFloatingWindow();
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -77,41 +59,6 @@ public class SaicSystemUIService extends Service {
     protected void dump(FileDescriptor fd, PrintWriter writer, String[] args) {
         super.dump(fd, writer, args);
     }
-    private void showFloatingWindow() {
-        if(Settings.canDrawOverlays(this)){
-            LayoutInflater layoutInflater =LayoutInflater.from(this);
-            displayView = layoutInflater.inflate(R.layout.activity_main_test2,null);
-            displayView.setOnTouchListener(new FloatingOnTouchListener());
-            mWindowManage.addView(displayView,mLayoutParams);
-        }
-    }
-    private class FloatingOnTouchListener implements View.OnTouchListener {
-        private int x;
-        private int y;
 
-        @Override
-        public boolean onTouch(View view, MotionEvent event) {
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    x = (int) event.getRawX();
-                    y = (int) event.getRawY();
-                    break;
-                case MotionEvent.ACTION_MOVE:
-                   /* int nowX = (int) event.getRawX();
-                    int nowY = (int) event.getRawY();
-                    mLayoutParams.height = nowY;
-                    if(mLayoutParams.height <= 20){
-                        mLayoutParams.height = 20;
-                    }
-                    if(mLayoutParams.height >= 800){
-                        mLayoutParams.height = 800;
-                    }
-                    mWindowManage.updateViewLayout(view, mLayoutParams);*/
-                    break;
-                default:
-                    break;
-            }
-            return false;
-        }
-    }
+
 }
