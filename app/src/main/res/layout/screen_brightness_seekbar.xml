@@ -27,12 +27,12 @@
             android:gravity="center"
             android:layout_width="392px"
             android:layout_height="50px"
-            android:layout_toLeftOf="@+id/text1"
             android:maxHeight="6px"
             android:minHeight="6px"
             android:max="100"
+            android:thumbOffset="0dip"
             android:paddingRight="6px"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="center"
             android:progressDrawable="@drawable/seekbar_layer"
             android:thumb="@drawable/seekbar_ring" />
     </LinearLayout>
