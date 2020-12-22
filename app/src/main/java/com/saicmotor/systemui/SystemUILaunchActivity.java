@@ -18,7 +18,7 @@ public class SystemUILaunchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main_test2);
+        //setContentView(R.layout.panel_view_layout);
         startNavigationSystemUIService(SystemUIApplication.getInstance());
         finish();
     }
