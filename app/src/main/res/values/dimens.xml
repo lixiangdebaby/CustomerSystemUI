@@ -16,13 +16,19 @@
     <dimen name="systemui_imagebutton_background_height">126px</dimen>
     <dimen name="systemui_mainlayout_height">750px</dimen>
     <dimen name="systemui_mainlayout_margin_left">100px</dimen>
-    <dimen name="systemui_mainlayout_margin_top">110px</dimen>
+    <dimen name="systemui_mainlayout_margin_top">0px</dimen>
     <dimen name="systemui_linear_layout_one">151px</dimen>
     <dimen name="systemui_seekbar_background_height">126px</dimen>
+    <dimen name="systemui_seekbar_background_margin_right">80px</dimen>
     <dimen name="systemui_seekbar_background_width">538px</dimen>
     <dimen name="systemui_seekbar_background_corner">63px</dimen>
     <dimen name="systemui_mode_margin_right">80px</dimen>
     <dimen name="systemui_pulldown_view_background_height">10px</dimen>
     <dimen name="systemui_pulldown_view_background_width">180px</dimen>
     <dimen name="systemui_pulldown_view_background_corner">6px</dimen>
+    <dimen name="systeui_panel_line_one_height">316px</dimen>
+    <dimen name="systeui_panel_mute_margin_end">232px</dimen>
+    <dimen name="systeui_panel_line_two_height">206px</dimen>
+    <dimen name="systeui_panel_sliddown_height">26px</dimen>
+
 </resources>

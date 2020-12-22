@@ -2,10 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:id="@+id/third_line_button"
-    android:layout_marginTop="80px"
-    android:layout_marginStart="100px"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="202px"
+    >
     <ImageButton
         android:id="@+id/btn_home"
         android:layout_width="@dimen/systemui_imagebutton_background_width"
@@ -13,7 +12,8 @@
         android:scaleType="centerInside"
         android:background="@drawable/systemui_imagebutton_background_normal"
         android:src="@drawable/imgbtn_home_selector"
-        android:layout_marginEnd="80px"
+        android:layout_marginEnd="@dimen/systemui_mode_margin_right"
+        android:layout_marginStart="@dimen/systemui_mainlayout_margin_left"
         />
     <ImageButton
         android:id="@+id/btn_bt"
@@ -22,7 +22,7 @@
         android:scaleType="centerInside"
         android:background="@drawable/systemui_imagebutton_background_normal"
         android:src="@drawable/imgbtn_bt_selector"
-        android:layout_marginEnd="80px"
+        android:layout_marginEnd="@dimen/systemui_mode_margin_right"
         />
     <ImageButton
         android:id="@+id/btn_wifi"
@@ -31,7 +31,7 @@
         android:scaleType="centerInside"
         android:background="@drawable/systemui_imagebutton_background_normal"
         android:src="@drawable/imgbtn_wifi_selector"
-        android:layout_marginEnd="80px"
+        android:layout_marginEnd="@dimen/systemui_mode_margin_right"
         />
     <ImageButton
         android:id="@+id/btn_lock"
@@ -49,7 +49,7 @@
         android:scaleType="centerInside"
         android:background="@drawable/systemui_imagebutton_background_normal"
         android:src="@drawable/imgbtn_electric_selector"
-        android:layout_marginEnd="80px"
+        android:layout_marginEnd="@dimen/systemui_mode_margin_right"
         />
     <ImageButton
         android:id="@+id/btn_buble"

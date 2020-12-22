@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="100px"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/systeui_panel_line_two_height"
+    android:layout_marginStart="0px"
     >
     <LinearLayout
         android:id="@+id/liner_volume_seekbar"
         android:layout_width="@dimen/systemui_seekbar_background_width"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/systemui_seekbar_background_height"
         android:orientation="horizontal"
         android:layout_gravity="center"
         android:background="@drawable/systemui_seekbar_bg"
-        android:layout_marginRight="80px">
+        android:layout_marginStart="@dimen/systemui_mainlayout_margin_left"
+        android:layout_marginRight="@dimen/systemui_seekbar_background_margin_right">
         <ImageView
             android:layout_height="94px"
             android:layout_width="94px"
@@ -28,7 +30,7 @@
             android:layout_toLeftOf="@+id/text1"
             android:maxHeight="6px"
             android:minHeight="6px"
-            android:max="200"
+            android:max="100"
             android:paddingRight="6px"
             android:layout_gravity="center_vertical"
             android:progressDrawable="@drawable/seekbar_layer"
@@ -42,8 +44,7 @@
         android:background="@drawable/systemui_imagebutton_background_normal"
         android:src="@drawable/imgbtn_brightness_selector"
         android:layout_gravity="center"
-        android:layout_marginEnd="232px"
+        android:layout_marginEnd="@dimen/systeui_panel_mute_margin_end"
+        android:layout_marginStart="@dimen/systemui_seekbar_background_margin_right"
         />
-
-
 </LinearLayout>
