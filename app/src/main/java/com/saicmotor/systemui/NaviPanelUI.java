@@ -1,7 +1,11 @@
 package com.saicmotor.systemui;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableWrapper;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
@@ -32,6 +36,8 @@ public class NaviPanelUI {
     private static final String TAG = NaviPanelUI.class.getSimpleName();
     private ViewGroup.LayoutParams mDispalyViewLayoutParams;
     private LinearLayout mLinear_sliddown;
+    private LinearLayout mDragView;
+    Drawable mDragViewdrawable;
     private static final int COLLAPSED_MSG = 10;
     private static final int EXPANDED_MSG = 12;
     UpdateUIHandler mUpdateUIHandler;
@@ -41,11 +47,15 @@ public class NaviPanelUI {
         }
         return  mNaviPanelUI;
     }
+    void init(){
+        mDragViewdrawable = mContext.getResources().getDrawable(R.drawable.dragview_bg);
+    }
     public NaviPanelUI(Context context){
         mContext =  context;
         mUpdateUIHandler = new UpdateUIHandler();
         createFloatingView();
         showFloatingWindow();
+        init();
     }
     private void createFloatingView(){
         mIsStarted = true;
@@ -64,7 +74,6 @@ public class NaviPanelUI {
         mLayoutParams.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
         mLayoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
         mLayoutParams.height = 60;
-
         mLayoutParams.x = 0;
         mLayoutParams.y = 0;
     }
@@ -73,6 +82,7 @@ public class NaviPanelUI {
             LayoutInflater layoutInflater =LayoutInflater.from(mContext);
             mDisplayView = (SlidingUpPanelLayout)layoutInflater.inflate(R.layout.panel_view_layout,null);
             Log.d(TAG,"mIsExpand = "+getPanelState());
+            mDragView = (LinearLayout)mDisplayView.findViewById(R.id.dragView);
             mDispalyViewLayoutParams = mDisplayView.getLayoutParams();
             mDisplayView.setOnTouchListener(new NaviPanelUI.FloatingOnTouchListener());
             mWindowManage.addView(mDisplayView,mLayoutParams);
@@ -122,13 +132,12 @@ public class NaviPanelUI {
         public boolean onTouch(View view, MotionEvent motionEvent) {
             Log.d(TAG,"getPanelState() = "+getPanelState()+ " motionEvent.event = "+motionEvent.getAction());
             if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
-
                 if(getPanelState() == SlidingUpPanelLayout.PanelState.COLLAPSED){
                     setNaviPanelUICollaps(true);
                 }
             }else if(motionEvent.getAction() == MotionEvent.ACTION_UP){
                 if(getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED){
-                    setNaviPanelUICollaps(false);
+                    //setNaviPanelUICollaps(false);
                 }
             }
             return false;
@@ -144,19 +153,26 @@ public class NaviPanelUI {
             mWindowManage.updateViewLayout(mDisplayView, mLayoutParams);
         }
     }
-
+    public void setDisplayViewBgColor(float offset){
+        int alpha = (int)(offset*255);
+        mDragViewdrawable.setAlpha(alpha);
+        mDragView.setBackground(mDragViewdrawable);
+    }
     public SlidingUpPanelLayout.PanelState getPanelState(){
         return mDisplayView.getPanelState();
     }
     class DisplayViewPanelStateLister implements SlidingUpPanelLayout.PanelSlideListener{
         @Override
         public void onPanelSlide(View panel, float slideOffset) {
-
+            Log.d(TAG,"slideOffset = "+slideOffset);
+            setDisplayViewBgColor(slideOffset);
         }
         @Override
         public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
             if(newState == SlidingUpPanelLayout.PanelState.COLLAPSED){
                 setNaviPanelUICollaps(false);
+            }else if(newState == SlidingUpPanelLayout.PanelState.EXPANDED){
+
             }
         }
     }
@@ -180,4 +196,5 @@ public class NaviPanelUI {
             }
         }
     }
+
 }

@@ -29,7 +29,7 @@
         android:layout_height="750px"
         android:orientation="vertical"
         android:id="@+id/dragView"
-        android:background="@color/systemui_background_color">
+        android:background="@color/transparent">
         <include layout="@layout/systemui_layout_line_one"/>
         <include layout="@layout/screen_brightness_seekbar"/>
         <include layout="@layout/third_line_button_layout"/>
