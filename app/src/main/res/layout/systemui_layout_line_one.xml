@@ -81,6 +81,8 @@
                 android:textSize="28px"
                 android:gravity="center_horizontal"
                 android:text="狂欢派对模式"
+                android:textColor="@color/systemui_scene_text_normal_color"
+                android:alpha="0.4"
                 />
         </LinearLayout>
         <LinearLayout
@@ -109,6 +111,8 @@
                 android:textSize="28px"
                 android:gravity="center_horizontal"
                 android:text="入睡模式"
+                android:textColor="@color/systemui_scene_text_normal_color"
+                android:alpha="0.4"
                 />
         </LinearLayout>
 
@@ -138,6 +142,8 @@
                 android:gravity="center_horizontal"
                 android:textSize="28px"
                 android:text="假期赖床模式"
+                android:textColor="@color/systemui_scene_text_normal_color"
+                android:alpha="0.4"
                 />
         </LinearLayout>
 
@@ -167,6 +173,8 @@
                 android:gravity="center_horizontal"
                 android:textSize="28px"
                 android:text="禅境模式"
+                android:textColor="@color/systemui_scene_text_normal_color"
+                android:alpha="0.4"
                 />
         </LinearLayout>
 </LinearLayout>

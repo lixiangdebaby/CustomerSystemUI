@@ -19,5 +19,6 @@
     <color name="systemui_seekbar_bg">#FF007AFF</color>
     <color name="systemui_seekbar_progress_bg">#FF374057</color>
     <color name="systemui_pulldown_view_bg_color">#FFE4E5E7</color>
+    <color name="systemui_scene_text_normal_color">#FF374057</color>
 
 </resources>
