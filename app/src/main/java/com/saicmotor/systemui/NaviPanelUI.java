@@ -20,6 +20,8 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import com.saicmotor.systemui.function.BlueToothFunction;
+import com.saicmotor.systemui.function.WifiFunction;
 import com.saicmotor.systemui.slidinguppanel.SlidingUpPanelLayout;
 import com.saicmotor.systemui.utils.StartActivityUtils;
 
@@ -30,6 +32,8 @@ public class NaviPanelUI {
     private WindowManager.LayoutParams mLayoutParams;
     private SlidingUpPanelLayout mDisplayView;
     private ImageButton mHomeBtn;
+    private ImageButton mBlueToothBtn;
+    private ImageButton mWifiBtn;
     public static boolean mIsStarted = false;
     private Context mContext = SystemUIApplication.getInstance();
     private static NaviPanelUI mNaviPanelUI;
@@ -37,10 +41,11 @@ public class NaviPanelUI {
     private ViewGroup.LayoutParams mDispalyViewLayoutParams;
     private LinearLayout mLinear_sliddown;
     private LinearLayout mDragView;
-    Drawable mDragViewdrawable;
+    private Drawable mDragViewdrawable;
     private static final int COLLAPSED_MSG = 10;
     private static final int EXPANDED_MSG = 12;
-    UpdateUIHandler mUpdateUIHandler;
+    private UpdateUIHandler mUpdateUIHandler;
+
     public static NaviPanelUI getInstance(Context context){
         if(mNaviPanelUI == null){
             mNaviPanelUI = new NaviPanelUI(context);
@@ -95,6 +100,10 @@ public class NaviPanelUI {
             if(mHomeBtn != null){
                 mHomeBtn.setOnClickListener(new HomeBtnOnClickListener());
             }
+            mBlueToothBtn=(ImageButton)mDisplayView.findViewById(R.id.btn_bt);
+            mBlueToothBtn.setOnClickListener(new BlueToothFunction());
+            mWifiBtn=(ImageButton)mDisplayView.findViewById(R.id.btn_wifi);
+            mWifiBtn.setOnClickListener(new WifiFunction());
         }
     }
     private class FloatingOnTouchListener implements View.OnTouchListener {

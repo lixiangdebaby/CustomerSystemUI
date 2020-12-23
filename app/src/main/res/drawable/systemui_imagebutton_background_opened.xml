@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval"
+    android:useLevel="false">
+    <solid android:color="@color/systemui_btn_select"/>
+    <size android:width="@dimen/systemui_imagebutton_background_width"
+        android:height="@dimen/systemui_imagebutton_background_height"/>
+</shape>
