@@ -30,6 +30,7 @@ import static android.content.Context.WINDOW_SERVICE;
 public class NaviPanelUI {
     private WindowManager mWindowManage;
     private WindowManager.LayoutParams mLayoutParams;
+    private WindowManager.LayoutParams mStatusBarLayout;
     private SlidingUpPanelLayout mDisplayView;
     private ImageButton mHomeBtn;
     private ImageButton mBlueToothBtn;
@@ -45,7 +46,9 @@ public class NaviPanelUI {
     private static final int COLLAPSED_MSG = 10;
     private static final int EXPANDED_MSG = 12;
     private UpdateUIHandler mUpdateUIHandler;
-
+    private StatusBarUI mStatusBarUI;
+    private static final int SYSTEMUI_PANEL_WINDOW_HEIGHT_DEFAULT = 27;
+    private static final int SYSTEMUI_PANEL_WINDOW_HEIGHT_EXPANDED = 750;
     public static NaviPanelUI getInstance(Context context){
         if(mNaviPanelUI == null){
             mNaviPanelUI = new NaviPanelUI(context);
@@ -57,14 +60,16 @@ public class NaviPanelUI {
     }
     public NaviPanelUI(Context context){
         mContext =  context;
+        mWindowManage = (WindowManager) mContext.getSystemService(WINDOW_SERVICE);
         mUpdateUIHandler = new UpdateUIHandler();
         createFloatingView();
         showFloatingWindow();
+        createStatusBarWindow(mWindowManage);
+        showStatusBarView();
         init();
     }
     private void createFloatingView(){
         mIsStarted = true;
-        mWindowManage = (WindowManager) mContext.getSystemService(WINDOW_SERVICE);
         mLayoutParams = new WindowManager.LayoutParams();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             mLayoutParams.type = 2024;// WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;//NAVIGATION_BAR_PANEL=2024
@@ -78,9 +83,30 @@ public class NaviPanelUI {
         mLayoutParams.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
         mLayoutParams.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
         mLayoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
-        mLayoutParams.height = 60;
+        mLayoutParams.height = SYSTEMUI_PANEL_WINDOW_HEIGHT_DEFAULT;
         mLayoutParams.x = 0;
         mLayoutParams.y = 0;
+    }
+    private void createStatusBarWindow(WindowManager windowManager){
+        if(windowManager == null){
+            return;
+        }
+        mStatusBarLayout = new WindowManager.LayoutParams();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            mStatusBarLayout.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;//NAVIGATION_BAR_PANEL=2024
+        } else {
+            mStatusBarLayout.type = WindowManager.LayoutParams.TYPE_PHONE;
+        }
+        mStatusBarLayout.format = PixelFormat.RGBA_8888;
+        mStatusBarLayout.gravity = Gravity.LEFT | Gravity.TOP;
+        mStatusBarLayout.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL|WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+        mStatusBarLayout.flags |= WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
+        mStatusBarLayout.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        mStatusBarLayout.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
+        mStatusBarLayout.width = WindowManager.LayoutParams.MATCH_PARENT;
+        mStatusBarLayout.height = 56;
+        mStatusBarLayout.x = 0;
+        mStatusBarLayout.y = SYSTEMUI_PANEL_WINDOW_HEIGHT_DEFAULT;
     }
     private void showFloatingWindow() {
         if(Settings.canDrawOverlays(mContext)){
@@ -89,7 +115,7 @@ public class NaviPanelUI {
             Log.d(TAG,"mIsExpand = "+getPanelState());
             mDragView = (LinearLayout)mDisplayView.findViewById(R.id.dragView);
             mDispalyViewLayoutParams = mDisplayView.getLayoutParams();
-            mDisplayView.setOnTouchListener(new NaviPanelUI.FloatingOnTouchListener());
+            //mDisplayView.setOnTouchListener(new NaviPanelUI.FloatingOnTouchListener());
             mWindowManage.addView(mDisplayView,mLayoutParams);
             mLinear_sliddown = (LinearLayout)mDisplayView.findViewById(R.id.linear_sliddown);
             if(mLinear_sliddown != null){
@@ -104,6 +130,17 @@ public class NaviPanelUI {
             mBlueToothBtn.setOnClickListener(new BlueToothFunction());
             mWifiBtn=(ImageButton)mDisplayView.findViewById(R.id.btn_wifi);
             mWifiBtn.setOnClickListener(new WifiFunction());
+        }
+    }
+    private void showStatusBarView(){
+        if(Settings.canDrawOverlays(mContext)) {
+            LayoutInflater layoutInflater =LayoutInflater.from(mContext);
+            if (mDisplayView != null) {
+                mStatusBarUI = new StatusBarUI(mContext, layoutInflater);
+                if(mStatusBarLayout !=null && mStatusBarUI!=null){
+                    mWindowManage.addView(mStatusBarUI.getStatusBarView(),mStatusBarLayout);
+                }
+            }
         }
     }
     private class FloatingOnTouchListener implements View.OnTouchListener {
@@ -155,10 +192,10 @@ public class NaviPanelUI {
     public void setNaviPanelUICollaps(boolean isExpand){
         Log.d(TAG,"isExpand() = "+isExpand);
         if(isExpand){
-            mLayoutParams.height = 750;
+            mLayoutParams.height = SYSTEMUI_PANEL_WINDOW_HEIGHT_EXPANDED;
             mWindowManage.updateViewLayout(mDisplayView, mLayoutParams);
         }else{
-            mLayoutParams.height = 60;
+            mLayoutParams.height = SYSTEMUI_PANEL_WINDOW_HEIGHT_DEFAULT;
             mWindowManage.updateViewLayout(mDisplayView, mLayoutParams);
         }
     }
