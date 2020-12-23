@@ -59,7 +59,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginEnd="@dimen/systemui_lineone_mode_margin_right"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:clickable="true">
 
             <com.saicmotor.systemui.customview.CircleImageview
                 android:layout_width="@dimen/systemui_panel_line_one_image_width"
@@ -88,7 +89,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginEnd="@dimen/systemui_lineone_mode_margin_right"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:clickable="true">
             <com.saicmotor.systemui.customview.CircleImageview
                 android:layout_width="@dimen/systemui_panel_line_one_image_width"
                 android:layout_height="@dimen/systemui_panel_line_one_image_height"
@@ -116,7 +118,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginEnd="@dimen/systemui_lineone_mode_margin_right"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:clickable="true">
             <com.saicmotor.systemui.customview.CircleImageview
                 android:layout_width="@dimen/systemui_panel_line_one_image_width"
                 android:layout_height="@dimen/systemui_panel_line_one_image_height"
@@ -144,7 +147,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginEnd="@dimen/systemui_lineone_mode_margin_right"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:clickable="true">
             <com.saicmotor.systemui.customview.CircleImageview
                 android:layout_width="@dimen/systemui_panel_line_one_image_width"
                 android:layout_height="@dimen/systemui_panel_line_one_image_height"
