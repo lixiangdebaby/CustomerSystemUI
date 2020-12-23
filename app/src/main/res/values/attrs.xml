@@ -6,6 +6,7 @@
         <attr name="ringHeadColor" format="color" />
         <attr name="backgroundHeadColor" format="color" />
         <attr name="ishaveboder" format="boolean" />
+        <attr name="mDiameter" format="dimension" />
     </declare-styleable>
     <declare-styleable name="SlidingUpPanelLayout">
         <attr name="umanoPanelHeight" format="dimension" />

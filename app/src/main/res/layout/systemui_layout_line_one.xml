@@ -55,51 +55,56 @@
 
         <LinearLayout
             android:id="@+id/linear_layout_mode1"
-            android:layout_width="wrap_content"
+            android:layout_width="168px"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/systemui_mode_margin_right"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/systemui_lineone_mode_margin_right"
             android:orientation="vertical">
 
             <com.saicmotor.systemui.customview.CircleImageview
-                android:layout_width="126px"
-                android:layout_height="126px"
+                android:layout_width="@dimen/systemui_panel_line_one_image_width"
+                android:layout_height="@dimen/systemui_panel_line_one_image_height"
                 android:background="@android:color/transparent"
                 android:src="@drawable/pic_1_m"
                 app:circleBorderHeadWidth="0dp"
                 app:ishaveboder="false"
+                android:layout_gravity="center"
+                android:gravity="center"
+                app:mDiameter="@dimen/systemui_panel_line_one_image_circle_diameter"
                 app:ringHeadColor="@color/colorAccent" />
             <TextView
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="6px"
                 android:layout_width="wrap_content"
-                android:layout_height="28px"
-                android:textSize="16sp"
+                android:layout_height="wrap_content"
+                android:textSize="28px"
                 android:gravity="center_horizontal"
                 android:text="狂欢派对模式"
                 />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/linear_layout_mode2"
-            android:layout_width="wrap_content"
+            android:layout_width="168px"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/systemui_mode_margin_right"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/systemui_lineone_mode_margin_right"
             android:orientation="vertical">
             <com.saicmotor.systemui.customview.CircleImageview
-                android:layout_width="126px"
-                android:layout_height="126px"
+                android:layout_width="@dimen/systemui_panel_line_one_image_width"
+                android:layout_height="@dimen/systemui_panel_line_one_image_height"
                 android:background="@android:color/transparent"
+                android:layout_gravity="center"
                 app:circleBorderHeadWidth="0dp"
                 app:ringHeadColor="@color/colorAccent"
                 app:ishaveboder ="false"
+                app:mDiameter="@dimen/systemui_panel_line_one_image_circle_diameter"
                 android:src="@drawable/pic_2_m"/>
             <TextView
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="6px"
                 android:layout_width="wrap_content"
-                android:layout_height="28px"
-                android:textSize="16sp"
+                android:layout_height="wrap_content"
+                android:textSize="28px"
                 android:gravity="center_horizontal"
                 android:text="入睡模式"
                 />
@@ -107,52 +112,56 @@
 
         <LinearLayout
             android:id="@+id/linear_layout_mode3"
-            android:layout_width="wrap_content"
+            android:layout_width="168px"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/systemui_mode_margin_right"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/systemui_lineone_mode_margin_right"
             android:orientation="vertical">
             <com.saicmotor.systemui.customview.CircleImageview
-                android:layout_width="126px"
-                android:layout_height="126px"
+                android:layout_width="@dimen/systemui_panel_line_one_image_width"
+                android:layout_height="@dimen/systemui_panel_line_one_image_height"
                 android:background="@android:color/transparent"
+                android:layout_gravity="center"
                 app:circleBorderHeadWidth="0dp"
                 app:ringHeadColor="@color/colorAccent"
                 app:ishaveboder ="false"
+                app:mDiameter="@dimen/systemui_panel_line_one_image_circle_diameter"
                 android:src="@drawable/pic_3_m"/>
             <TextView
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="6px"
                 android:layout_width="wrap_content"
-                android:layout_height="28px"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:textSize="16sp"
+                android:textSize="28px"
                 android:text="假期赖床模式"
                 />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linear_layout_mode4"
-            android:layout_width="wrap_content"
+            android:layout_width="168px"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="@dimen/systemui_mode_margin_right"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/systemui_lineone_mode_margin_right"
             android:orientation="vertical">
             <com.saicmotor.systemui.customview.CircleImageview
-                android:layout_width="126px"
-                android:layout_height="126px"
+                android:layout_width="@dimen/systemui_panel_line_one_image_width"
+                android:layout_height="@dimen/systemui_panel_line_one_image_height"
                 android:background="@android:color/transparent"
+                android:layout_gravity="center"
                 app:circleBorderHeadWidth="0dp"
                 app:ringHeadColor="@color/colorAccent"
                 app:ishaveboder ="false"
+                app:mDiameter="@dimen/systemui_panel_line_one_image_circle_diameter"
                 android:src="@drawable/pic_4_m"/>
             <TextView
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="6px"
                 android:layout_width="wrap_content"
-                android:layout_height="28px"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:textSize="16sp"
+                android:textSize="28px"
                 android:text="禅境模式"
                 />
         </LinearLayout>

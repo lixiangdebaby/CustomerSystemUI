@@ -27,6 +27,7 @@ public class CircleImageview extends ImageView {
     private int mWidth;        //获得控件宽度
     private int mHeight;             //获得控件高度
     private int mRadius;             //中心园的半径
+    private int mDiameter;
     private int mCircleBorderWidth;        //边界宽度
     private int mCirlcleBorderColor;             //边界边框颜色
     private int mCircleBackgroudColor;      //圆形头像背景色
@@ -51,6 +52,9 @@ public class CircleImageview extends ImageView {
                     break;
                 case R.styleable.CircleHead_ishaveboder:
                     mIsHaveBoder = typedArray.getBoolean(attr,false);
+                    break;
+                case R.styleable.CircleHead_mDiameter:
+                    mDiameter = (int) typedArray.getDimension(attr, 0);
                     break;
             }
         }
@@ -109,7 +113,8 @@ public class CircleImageview extends ImageView {
         mHeight = MeasureSpec.getSize(heightMeasureSpec);
         int mCircleSize = Math.min(mHeight, mWidth);
         //圆的半径短的二分之一作为半径
-        mRadius = mCircleSize / 2 - (mCircleBorderWidth+mBorderOffset+mStrokeWidth);
+        //mRadius = mCircleSize / 2 - (mCircleBorderWidth+mBorderOffset+mStrokeWidth);
+        mRadius = mDiameter/2;
     }
     @Override
     protected void onDraw(Canvas canvas) {
