@@ -49,6 +49,7 @@ public class NaviPanelUI {
     private StatusBarUI mStatusBarUI;
     private static final int SYSTEMUI_PANEL_WINDOW_HEIGHT_DEFAULT = 27;
     private static final int SYSTEMUI_PANEL_WINDOW_HEIGHT_EXPANDED = 750;
+    private static final int SYSTEMUI_STATUSBAR_WINDOW_HEIGHT_DEFAULT = 56;
     public static NaviPanelUI getInstance(Context context){
         if(mNaviPanelUI == null){
             mNaviPanelUI = new NaviPanelUI(context);
@@ -104,7 +105,7 @@ public class NaviPanelUI {
         mStatusBarLayout.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
         mStatusBarLayout.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
         mStatusBarLayout.width = WindowManager.LayoutParams.MATCH_PARENT;
-        mStatusBarLayout.height = 56;
+        mStatusBarLayout.height = SYSTEMUI_STATUSBAR_WINDOW_HEIGHT_DEFAULT;
         mStatusBarLayout.x = 0;
         mStatusBarLayout.y = SYSTEMUI_PANEL_WINDOW_HEIGHT_DEFAULT;
     }

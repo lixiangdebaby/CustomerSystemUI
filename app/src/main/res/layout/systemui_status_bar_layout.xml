@@ -2,31 +2,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/status_bar_view"
     android:layout_width="match_parent"
-    android:layout_height="56px"
+    android:layout_height="@dimen/systeui_status_bar_lineone_height"
     android:orientation="horizontal"
     android:layout_gravity="left"
     android:background="@color/transparent">
     <ImageButton
         android:id="@+id/status_phone"
         android:src="@drawable/icon_status_iphone_n"
-        android:layout_width="56px"
-        android:layout_height="56px"
+        android:layout_width="@dimen/systemui_status_bar_icon_width"
+        android:layout_height="@dimen/systeui_status_bar_lineone_height"
         android:layout_marginStart="1672px"
         android:background="@color/transparent"/>
     <ImageButton
         android:id="@+id/statusbar_bt"
         android:layout_toRightOf="@id/status_phone"
         android:src="@drawable/icon_status_bt_n"
-        android:layout_width="56px"
-        android:layout_height="56px"
-        android:layout_marginStart="24px"
+        android:layout_width="@dimen/systemui_status_bar_icon_width"
+        android:layout_height="@dimen/systemui_status_bar_icon_height"
+        android:layout_marginStart="@dimen/systemui_status_bar_icon_padding"
         android:background="@color/transparent"/>
     <ImageButton
         android:id="@+id/statusbar_wifi"
         android:layout_toRightOf="@id/statusbar_bt"
         android:src="@drawable/icon_status_wifi_n"
-        android:layout_width="56px"
-        android:layout_height="56px"
-        android:layout_marginStart="24px"
+        android:layout_width="@dimen/systemui_status_bar_icon_width"
+        android:layout_height="@dimen/systemui_status_bar_icon_height"
+        android:layout_marginStart="@dimen/systemui_status_bar_icon_padding"
         android:background="@color/transparent"/>
 </RelativeLayout>

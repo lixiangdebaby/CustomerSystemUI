@@ -30,5 +30,9 @@
     <dimen name="systeui_panel_mute_margin_end">232px</dimen>
     <dimen name="systeui_panel_line_two_height">206px</dimen>
     <dimen name="systeui_panel_sliddown_height">26px</dimen>
+    <dimen name="systeui_status_bar_lineone_height">56px</dimen>
+    <dimen name="systemui_status_bar_icon_width">56px</dimen>
+    <dimen name="systemui_status_bar_icon_height">56px</dimen>
+    <dimen name="systemui_status_bar_icon_padding">24px</dimen>
 
 </resources>
