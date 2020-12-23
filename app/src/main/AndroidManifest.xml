@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SystemUI"
         android:name=".SystemUIApplication">
-        <activity android:name=".SystemUILaunchActivity">
+        <activity android:name=".SystemUILaunchActivity" android:theme="@android:style/Theme.Translucent" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

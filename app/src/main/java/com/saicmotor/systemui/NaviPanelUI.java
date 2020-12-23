@@ -62,7 +62,7 @@ public class NaviPanelUI {
         mWindowManage = (WindowManager) mContext.getSystemService(WINDOW_SERVICE);
         mLayoutParams = new WindowManager.LayoutParams();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            mLayoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
+            mLayoutParams.type = 2024;// WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;//NAVIGATION_BAR_PANEL=2024
         } else {
             mLayoutParams.type = WindowManager.LayoutParams.TYPE_PHONE;
         }
