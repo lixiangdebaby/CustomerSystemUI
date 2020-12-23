@@ -113,10 +113,10 @@ public class CircleImageview extends ImageView {
     }
     @Override
     protected void onDraw(Canvas canvas) {
-        //这里注释掉onDraw是为了不绘制原来的画布,如果使用的话就意味着又是渲染一层，就会像第二个方案那样容易OOM
+        //这里注释掉onDraw是为了不绘制原来的画布,如果使用的话就意味着又是渲染一层
         //        super.onDraw(canvas);
         if (getDrawable() != null) {
-            Log.d("lixiang","getDrawable() = "+getDrawable()+"  w ,h" +mWidth +mHeight);
+            //Log.d("CircleImageview","getDrawable() = "+getDrawable()+"  w ,h" +mWidth +mHeight);
             setBitmapShader();
             canvas.drawRect(0, 0, mWidth, mHeight, mPaintBackgroud);
             canvas.drawCircle(mWidth / 2, mHeight / 2, mRadius, mPaintCircle);

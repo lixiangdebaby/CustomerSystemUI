@@ -26,7 +26,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-   /* signingConfigs {
+   signingConfigs {
      debug {
             storeFile file('signconfig/debug.keystore')//签名文件路径
 
@@ -35,7 +35,7 @@ android {
         config {
             storeFile file('signconfig/debug.keystore')//签名文件路径
         }
-    }*/
+    }
 }
 
 dependencies {
