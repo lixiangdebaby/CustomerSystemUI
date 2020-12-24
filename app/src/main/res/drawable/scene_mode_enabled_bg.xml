@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+     android:shape="oval">
+        <stroke android:width="4px" android:color="@color/systemui_btn_select" />
+        <solid android:color="@color/transparent" />
+        <size android:width="@dimen/systemui_panel_line_one_image_width" android:height="@dimen/systemui_panel_line_one_image_height" />
+</shape>

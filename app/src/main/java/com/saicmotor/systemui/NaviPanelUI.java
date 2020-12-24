@@ -21,6 +21,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.saicmotor.systemui.function.BlueToothFunction;
+import com.saicmotor.systemui.function.SceneModeChange;
 import com.saicmotor.systemui.function.WifiFunction;
 import com.saicmotor.systemui.slidinguppanel.SlidingUpPanelLayout;
 import com.saicmotor.systemui.utils.StartActivityUtils;
@@ -42,6 +43,7 @@ public class NaviPanelUI {
     private ViewGroup.LayoutParams mDispalyViewLayoutParams;
     private LinearLayout mLinear_sliddown;
     private LinearLayout mDragView;
+    private LinearLayout mSceneModeView;
     private Drawable mDragViewdrawable;
     private static final int COLLAPSED_MSG = 10;
     private static final int EXPANDED_MSG = 12;
@@ -131,6 +133,8 @@ public class NaviPanelUI {
             mBlueToothBtn.setOnClickListener(new BlueToothFunction());
             mWifiBtn=(ImageButton)mDisplayView.findViewById(R.id.btn_wifi);
             mWifiBtn.setOnClickListener(new WifiFunction());
+            mSceneModeView = (LinearLayout)mDisplayView.findViewById(R.id.linear_layout_mode1);
+            mSceneModeView.setOnClickListener(new SceneModeChange());
         }
     }
     private void showStatusBarView(){
