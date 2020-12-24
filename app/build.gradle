@@ -1,7 +1,9 @@
 plugins {
     id 'com.android.application'
 }
-
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd")
+}
 android {
     compileSdkVersion 28
     buildToolsVersion "28.0.3"
@@ -18,7 +20,11 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -27,13 +33,21 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
    signingConfigs {
-     debug {
+        debug {
             storeFile file('signconfig/debug.keystore')//签名文件路径
-
-            println("====== signingConfigs.debug ======")
+        }
+        release {
+            storeFile file('signconfig/debug.keystore')
         }
         config {
             storeFile file('signconfig/debug.keystore')//签名文件路径
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            // 输出apk名称为SaicSystemUI_1.0_2020-12-24.apk
+            def fileName = "SaicSystemUI_${defaultConfig.versionName}_${releaseTime()}.apk"
+            outputFileName = fileName
         }
     }
 }
