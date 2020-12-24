@@ -34,8 +34,7 @@ public class NaviPanelUI {
     private WindowManager.LayoutParams mStatusBarLayout;
     private SlidingUpPanelLayout mDisplayView;
     private ImageButton mHomeBtn;
-    private ImageButton mBlueToothBtn;
-    private ImageButton mWifiBtn;
+
     public static boolean mIsStarted = false;
     private Context mContext = SystemUIApplication.getInstance();
     private static NaviPanelUI mNaviPanelUI;
@@ -43,7 +42,6 @@ public class NaviPanelUI {
     private ViewGroup.LayoutParams mDispalyViewLayoutParams;
     private LinearLayout mLinear_sliddown;
     private LinearLayout mDragView;
-    private LinearLayout mSceneModeView;
     private Drawable mDragViewdrawable;
     private static final int COLLAPSED_MSG = 10;
     private static final int EXPANDED_MSG = 12;
@@ -111,6 +109,33 @@ public class NaviPanelUI {
         mStatusBarLayout.x = 0;
         mStatusBarLayout.y = SYSTEMUI_PANEL_WINDOW_HEIGHT_DEFAULT;
     }
+    private void setSceneModeClickListener(){
+        SceneModeChange.mSceneModeView1 = (LinearLayout)mDisplayView.findViewById(R.id.linear_layout_mode1);
+        SceneModeChange.mSceneModeView1.setOnClickListener(new SceneModeChange());
+
+        SceneModeChange.mSceneModeView2 = (LinearLayout)mDisplayView.findViewById(R.id.linear_layout_mode2);
+        SceneModeChange.mSceneModeView2.setOnClickListener(new SceneModeChange());
+
+        SceneModeChange.mSceneModeView3 = (LinearLayout)mDisplayView.findViewById(R.id.linear_layout_mode3);
+        SceneModeChange.mSceneModeView3.setOnClickListener(new SceneModeChange());
+
+        SceneModeChange.mSceneModeView4 = (LinearLayout)mDisplayView.findViewById(R.id.linear_layout_mode4);
+        SceneModeChange.mSceneModeView4.setOnClickListener(new SceneModeChange());
+    }
+    private void setHomeBtnClickListener(){
+        mHomeBtn = (ImageButton)mDisplayView.findViewById(R.id.btn_home);
+        if(mHomeBtn != null){
+            mHomeBtn.setOnClickListener(new HomeBtnOnClickListener());
+        }
+    }
+    private void setBTBtnClickListener(){
+        BlueToothFunction.mBlueToothBtn=(ImageButton)mDisplayView.findViewById(R.id.btn_bt);
+        BlueToothFunction.mBlueToothBtn.setOnClickListener(new BlueToothFunction());
+    }
+    private void setWIFIBtnClickListener(){
+        WifiFunction.mWifiBtn=(ImageButton)mDisplayView.findViewById(R.id.btn_wifi);
+        WifiFunction.mWifiBtn.setOnClickListener(new WifiFunction());
+    }
     private void showFloatingWindow() {
         if(Settings.canDrawOverlays(mContext)){
             LayoutInflater layoutInflater =LayoutInflater.from(mContext);
@@ -125,16 +150,10 @@ public class NaviPanelUI {
                 mLinear_sliddown.setOnTouchListener(new PanelDownOnTouchListener());
             }
             mDisplayView.addPanelSlideListener(new DisplayViewPanelStateLister());
-            mHomeBtn = (ImageButton)mDisplayView.findViewById(R.id.btn_home);
-            if(mHomeBtn != null){
-                mHomeBtn.setOnClickListener(new HomeBtnOnClickListener());
-            }
-            mBlueToothBtn=(ImageButton)mDisplayView.findViewById(R.id.btn_bt);
-            mBlueToothBtn.setOnClickListener(new BlueToothFunction());
-            mWifiBtn=(ImageButton)mDisplayView.findViewById(R.id.btn_wifi);
-            mWifiBtn.setOnClickListener(new WifiFunction());
-            mSceneModeView = (LinearLayout)mDisplayView.findViewById(R.id.linear_layout_mode1);
-            mSceneModeView.setOnClickListener(new SceneModeChange());
+            setHomeBtnClickListener();
+            setBTBtnClickListener();
+            setWIFIBtnClickListener();
+            setSceneModeClickListener();
         }
     }
     private void showStatusBarView(){

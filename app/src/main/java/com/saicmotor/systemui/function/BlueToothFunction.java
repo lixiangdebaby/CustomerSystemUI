@@ -10,6 +10,7 @@ import com.saicmotor.systemui.SystemUIApplication;
 public class BlueToothFunction implements View.OnClickListener{
     boolean mIsBtSwitch = false;
     Context mContext = SystemUIApplication.getInstance();
+    public static ImageButton mBlueToothBtn;
     @Override
     public void onClick(View view) {
         if(view instanceof ImageButton){

@@ -10,6 +10,7 @@ import com.saicmotor.systemui.SystemUIApplication;
 public class WifiFunction implements View.OnClickListener{
     boolean mIsWifiSwitch = false;
     Context mContext = SystemUIApplication.getInstance();
+    public static ImageButton mWifiBtn;
     @Override
     public void onClick(View view) {
         if(view instanceof ImageButton){
