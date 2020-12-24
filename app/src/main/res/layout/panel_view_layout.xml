@@ -8,7 +8,7 @@
     android:background="@android:color/transparent"
     android:gravity="top"
     saicmotor:umanoPanelHeight="@dimen/systeui_panel_sliddown_height"
-    saicmotor:umanoShadowHeight="4dp"
+    saicmotor:umanoShadowHeight="0dp"
     saicmotor:umanoParallaxOffset="50dp"
     saicmotor:umanoDragView="@+id/dragView"
     saicmotor:umanoOverlay="true"
