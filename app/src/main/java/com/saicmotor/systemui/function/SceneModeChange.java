@@ -15,13 +15,9 @@ import java.util.ArrayList;
 
 public class SceneModeChange implements View.OnClickListener{
     private static final String TAG = SceneModeChange.class.getSimpleName();
-    private boolean mIsSceneModeChange = false;
     Context mContext = SystemUIApplication.getInstance();
-    public static  LinearLayout mSceneModeView1;
-    public static  LinearLayout mSceneModeView2;
-    public static  LinearLayout mSceneModeView3;
-    public static  LinearLayout mSceneModeView4;
     public static ArrayList<SceneModeStatus> mSceneModeStatus;
+    
     public void setSceneModeStatus(int currentIndex,boolean isOpen,ImageView imageView,TextView textView){
         if(isOpen){
             imageView.setBackground(mContext.getDrawable(R.drawable.scene_mode_enabled_bg));
