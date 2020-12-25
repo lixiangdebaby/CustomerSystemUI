@@ -18,13 +18,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.saicmotor.systemui.function.BlueToothFunction;
 import com.saicmotor.systemui.function.SceneModeChange;
+import com.saicmotor.systemui.function.SceneModeStatus;
 import com.saicmotor.systemui.function.WifiFunction;
 import com.saicmotor.systemui.slidinguppanel.SlidingUpPanelLayout;
 import com.saicmotor.systemui.utils.StartActivityUtils;
+
+import java.util.ArrayList;
 
 import static android.content.Context.WINDOW_SERVICE;
 
@@ -110,17 +115,38 @@ public class NaviPanelUI {
         mStatusBarLayout.y = SYSTEMUI_PANEL_WINDOW_HEIGHT_DEFAULT;
     }
     private void setSceneModeClickListener(){
-        SceneModeChange.mSceneModeView1 = (LinearLayout)mDisplayView.findViewById(R.id.linear_layout_mode1);
-        SceneModeChange.mSceneModeView1.setOnClickListener(new SceneModeChange());
+        SceneModeChange SceneModeChangeOnClickListener = new SceneModeChange();
+        SceneModeChange.mSceneModeStatus = new ArrayList<>();
+        SceneModeChange.mSceneModeStatus.clear();
+        SceneModeStatus sceneMode1Status = new SceneModeStatus();
+        sceneMode1Status.sceneLayout = (LinearLayout)mDisplayView.findViewById(R.id.linear_layout_mode1);
+        sceneMode1Status.sceneLayout.setOnClickListener(SceneModeChangeOnClickListener);
+        sceneMode1Status.LinearLayoutId = R.id.linear_layout_mode1;
+        SceneModeChange.mSceneModeStatus.add(sceneMode1Status);
 
-        SceneModeChange.mSceneModeView2 = (LinearLayout)mDisplayView.findViewById(R.id.linear_layout_mode2);
-        SceneModeChange.mSceneModeView2.setOnClickListener(new SceneModeChange());
 
-        SceneModeChange.mSceneModeView3 = (LinearLayout)mDisplayView.findViewById(R.id.linear_layout_mode3);
-        SceneModeChange.mSceneModeView3.setOnClickListener(new SceneModeChange());
+        SceneModeStatus sceneMode2Status = new SceneModeStatus();
+        sceneMode2Status.sceneLayout = (LinearLayout)mDisplayView.findViewById(R.id.linear_layout_mode2);
+        sceneMode2Status.sceneLayout.setOnClickListener(SceneModeChangeOnClickListener);
+        sceneMode2Status.LinearLayoutId = R.id.linear_layout_mode2;
+        sceneMode2Status.sceneStatus = false;
+        SceneModeChange.mSceneModeStatus.add(sceneMode2Status);
 
-        SceneModeChange.mSceneModeView4 = (LinearLayout)mDisplayView.findViewById(R.id.linear_layout_mode4);
-        SceneModeChange.mSceneModeView4.setOnClickListener(new SceneModeChange());
+        SceneModeStatus sceneMode3Status = new SceneModeStatus();
+        sceneMode3Status.sceneLayout = (LinearLayout)mDisplayView.findViewById(R.id.linear_layout_mode3);
+        sceneMode3Status.sceneLayout.setOnClickListener(SceneModeChangeOnClickListener);
+        sceneMode3Status.LinearLayoutId = R.id.linear_layout_mode3;
+        sceneMode3Status.sceneStatus = false;
+        SceneModeChange.mSceneModeStatus.add(sceneMode3Status);
+
+
+        SceneModeStatus sceneMode4Status = new SceneModeStatus();
+        sceneMode4Status.sceneLayout = (LinearLayout)mDisplayView.findViewById(R.id.linear_layout_mode4);
+        sceneMode4Status.sceneLayout.setOnClickListener(SceneModeChangeOnClickListener);
+        sceneMode4Status.LinearLayoutId = R.id.linear_layout_mode4;
+        sceneMode4Status.sceneStatus = false;
+        SceneModeChange.mSceneModeStatus.add(sceneMode4Status);
+
     }
     private void setHomeBtnClickListener(){
         mHomeBtn = (ImageButton)mDisplayView.findViewById(R.id.btn_home);
