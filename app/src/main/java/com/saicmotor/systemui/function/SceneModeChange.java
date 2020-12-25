@@ -17,7 +17,7 @@ public class SceneModeChange implements View.OnClickListener{
     private static final String TAG = SceneModeChange.class.getSimpleName();
     Context mContext = SystemUIApplication.getInstance();
     public static ArrayList<SceneModeStatus> mSceneModeStatus;
-    
+
     public void setSceneModeStatus(int currentIndex,boolean isOpen,ImageView imageView,TextView textView){
         if(isOpen){
             imageView.setBackground(mContext.getDrawable(R.drawable.scene_mode_enabled_bg));

@@ -48,9 +48,9 @@ public class NaviPanelUI {
     private LinearLayout mLinear_sliddown;
     private LinearLayout mDragView;
     private Drawable mDragViewdrawable;
-    private static final int COLLAPSED_MSG = 10;
-    private static final int EXPANDED_MSG = 12;
-    private UpdateUIHandler mUpdateUIHandler;
+    public static final int COLLAPSED_MSG = 10;
+    public static final int EXPANDED_MSG = 12;
+    public  static UpdateUIHandler mUpdateUIHandler;
     private StatusBarUI mStatusBarUI;
     private static final int SYSTEMUI_PANEL_WINDOW_HEIGHT_DEFAULT = 27;
     private static final int SYSTEMUI_PANEL_WINDOW_HEIGHT_EXPANDED = 750;
@@ -280,7 +280,7 @@ public class NaviPanelUI {
             mUpdateUIHandler.sendEmptyMessage(COLLAPSED_MSG);
         }
     }
-    class UpdateUIHandler extends Handler
+    public class UpdateUIHandler extends Handler
     {
         @Override
         public void handleMessage(Message msg) {

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.saicmotor.systemui.NaviPanelUI;
 import com.saicmotor.systemui.R;
 import com.saicmotor.systemui.SystemUIApplication;
 
@@ -22,5 +23,7 @@ public class WifiFunction implements View.OnClickListener{
                 mIsWifiSwitch = false;
             }
         }
+        NaviPanelUI.mUpdateUIHandler.removeMessages(NaviPanelUI.COLLAPSED_MSG);
+        NaviPanelUI.mUpdateUIHandler.sendEmptyMessage(NaviPanelUI.COLLAPSED_MSG);
     }
 }

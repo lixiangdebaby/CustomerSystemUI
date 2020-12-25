@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.saicmotor.systemui.NaviPanelUI;
 import com.saicmotor.systemui.R;
 import com.saicmotor.systemui.SystemUIApplication;
 
@@ -21,6 +22,8 @@ public class BlueToothFunction implements View.OnClickListener{
                 view.setBackground(mContext.getDrawable(R.drawable.systemui_imagebutton_background_normal));
                 mIsBtSwitch = false;
             }
+            NaviPanelUI.mUpdateUIHandler.removeMessages(NaviPanelUI.COLLAPSED_MSG);
+            NaviPanelUI.mUpdateUIHandler.sendEmptyMessage(NaviPanelUI.COLLAPSED_MSG);
         }
     }
 }
