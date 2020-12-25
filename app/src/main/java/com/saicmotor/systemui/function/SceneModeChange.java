@@ -19,6 +19,17 @@ public class SceneModeChange implements View.OnClickListener{
     public static  LinearLayout mSceneModeView2;
     public static  LinearLayout mSceneModeView3;
     public static  LinearLayout mSceneModeView4;
+    public void setSceneModeStatus(boolean isOpen,ImageView imageView,TextView textView){
+        if(isOpen){
+            imageView.setBackground(mContext.getDrawable(R.drawable.scene_mode_enabled_bg));
+            textView.setTextColor(mContext.getResources().getColor(R.color.systemui_btn_select));
+            textView.setAlpha(1);
+        }else{
+            imageView.setBackgroundColor(mContext.getResources().getColor(R.color.transparent));
+            textView.setTextColor(mContext.getResources().getColor(R.color.systemui_scene_text_normal_color));
+            textView.setAlpha(0.4f);
+        }
+    }
     @Override
     public void onClick(View view) {
         int viewID = view.getId();
@@ -27,14 +38,10 @@ public class SceneModeChange implements View.OnClickListener{
             ImageView imageView = (ImageView) ((LinearLayout) view).getChildAt(0);
             TextView textView = (TextView)((LinearLayout) view).getChildAt(1);
             if(!mIsSceneModeChange) {
-                imageView.setBackground(mContext.getDrawable(R.drawable.scene_mode_enabled_bg));
-                textView.setTextColor(mContext.getResources().getColor(R.color.systemui_btn_select));
-                textView.setAlpha(1);
+                setSceneModeStatus(true,imageView,textView);
                 mIsSceneModeChange = true;
             }else{
-                imageView.setBackgroundColor(mContext.getResources().getColor(R.color.transparent));
-                textView.setTextColor(mContext.getResources().getColor(R.color.systemui_scene_text_normal_color));
-                textView.setAlpha(0.4f);
+                setSceneModeStatus(false,imageView,textView);
                 mIsSceneModeChange = false;
             }
         }

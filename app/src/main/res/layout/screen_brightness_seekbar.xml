@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/systeui_panel_line_two_height"
     android:layout_marginStart="0px"
+    android:layout_marginTop="0px"
     >
     <LinearLayout
         android:id="@+id/liner_volume_seekbar"
         android:layout_width="@dimen/systemui_seekbar_background_width"
         android:layout_height="@dimen/systemui_seekbar_background_height"
         android:orientation="horizontal"
-        android:layout_gravity="center"
+        android:layout_gravity="top"
         android:background="@drawable/systemui_seekbar_bg"
         android:layout_marginStart="@dimen/systemui_mainlayout_margin_left"
         android:layout_marginRight="@dimen/systemui_seekbar_background_margin_right">
@@ -43,7 +44,7 @@
         android:scaleType="centerInside"
         android:background="@drawable/systemui_imagebutton_background_normal"
         android:src="@drawable/imgbtn_brightness_selector"
-        android:layout_gravity="center"
+        android:layout_gravity="top"
         android:layout_marginEnd="@dimen/systeui_panel_mute_margin_end"
         android:layout_marginStart="@dimen/systemui_seekbar_background_margin_right"
         />
