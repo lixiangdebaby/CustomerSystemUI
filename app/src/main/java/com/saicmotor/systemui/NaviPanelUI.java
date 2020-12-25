@@ -78,7 +78,7 @@ public class NaviPanelUI {
         mIsStarted = true;
         mLayoutParams = new WindowManager.LayoutParams();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            mLayoutParams.type = 2024;// WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;//NAVIGATION_BAR_PANEL=2024
+            mLayoutParams.type = WindowManager.LayoutParams.TYPE_STATUS_BAR_PANEL;//NAVIGATION_BAR_PANEL=2024
         } else {
             mLayoutParams.type = WindowManager.LayoutParams.TYPE_PHONE;
         }
@@ -99,7 +99,7 @@ public class NaviPanelUI {
         }
         mStatusBarLayout = new WindowManager.LayoutParams();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            mStatusBarLayout.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;//NAVIGATION_BAR_PANEL=2024
+            mStatusBarLayout.type = WindowManager.LayoutParams.TYPE_STATUS_BAR;//NAVIGATION_BAR_PANEL=2024
         } else {
             mStatusBarLayout.type = WindowManager.LayoutParams.TYPE_PHONE;
         }
